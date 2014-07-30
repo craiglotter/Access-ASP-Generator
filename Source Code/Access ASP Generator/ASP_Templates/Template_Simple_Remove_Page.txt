@@ -1,0 +1,92 @@
+<%
+Dim filename, conn
+filename=server.mappath("fpdb/#insertdatabase#")
+Set conn = server.createobject("ADODB.Connection")
+conn.mode = 3
+Dim strCon
+strCon = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ";"
+Dim removecomplete
+removecomplete = ""
+removecomplete = request.querystring("removecomplete")
+Page_Action = ""
+Page_Action = trim(replace(request.querystring("Page_Action"),"'",""))
+#insertfieldkey# = trim(replace(request.form("#insertfieldkey#"),"'",""))
+if #insertfieldkey# = "" then
+#insertfieldkey# = Session("S_#insertfieldkey#")
+end if
+Session("S_#insertfieldkey#") = #insertfieldkey#
+Confirm = trim(replace(request.querystring("Confirm"),"'",""))
+if Page_Action = "delete" then
+if Confirm = "true" then
+conn.open(strCon)
+countersql = "delete from #inserttable# where  #insertfieldkey# ='"& #insertfieldkey# &"'" 
+conn.execute(countersql)
+conn.close()
+response.redirect "#insertfilename#?removecomplete=true"
+Else
+%>
+<script language="javascript">
+var bMyVar = confirm("Are you sure you wish to delete this #insertobjectdescription#?\n(You cannot undo this operation)");
+if (bMyVar == true)
+{
+window.location = "#insertfilename#?Confirm=true&Page_Action=delete"
+}
+Else
+{
+window.location = "#insertfilename#"
+}
+</script> 
+<%
+End If
+End If
+%>
+<html>
+<head>
+<Title>#insertpagetitle#</Title>
+</head>
+<body>
+<center>
+<table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse" bordercolor="#111111">
+<tr>
+<td align="center">
+<hr color="#000000" width="50%" size="1">
+<center>
+<% 
+if not removecomplete = "true" then
+%>
+<h3>Remove #insertobjectdescription#</h3>
+Select from the list, the #insertobjectdescription# to remove:
+<form name="delete" method="POST" action="#insertfilename#?Page_Action=delete">
+<p align="center">
+<select size="1" name="#insertfieldkey#">
+<%
+conn.open strCon
+Set objRec = server.createobject("ADODB.Recordset")
+strSQL = "select #insertfieldkey# from #inserttable# order by #insertfieldkey#"
+objRec.ActiveConnection = conn
+objRec.open strSQL
+do while not objRec.eof
+response.write "<option>"& objRec.fields("#insertfieldkey#").value &"</option>"
+objRec.moveNext
+loop
+objRec.close
+conn.close
+%>
+</select>
+</p>
+<p align="center">
+<input type="submit" value="Remove #insertobjectdescription#" name="B1"></p>
+</form>
+<%
+else
+response.write "#insertobjectdescription# Successfully Removed"
+end if
+%>
+</center>
+<hr color="#000000" width="50%" size="1">
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

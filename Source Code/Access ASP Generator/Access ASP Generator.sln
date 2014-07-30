@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Access ASP Generator", "Access ASP Generator.vbproj", "{B617EFBE-02F4-45BA-A61E-993BCD0D05DE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B617EFBE-02F4-45BA-A61E-993BCD0D05DE}.Debug.ActiveCfg = Debug|.NET
+		{B617EFBE-02F4-45BA-A61E-993BCD0D05DE}.Debug.Build.0 = Debug|.NET
+		{B617EFBE-02F4-45BA-A61E-993BCD0D05DE}.Release.ActiveCfg = Release|.NET
+		{B617EFBE-02F4-45BA-A61E-993BCD0D05DE}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

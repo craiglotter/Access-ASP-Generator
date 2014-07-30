@@ -1,0 +1,78 @@
+<%
+Dim filename, conn
+filename = server.mappath("fpdb/#insertdatabase#")
+Set conn = server.createobject("ADODB.Connection")
+conn.mode = 3
+Dim strCon
+strCon = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filename & ";"
+Dim createcomplete
+createcomplete = ""
+createcomplete = request.querystring("createcomplete")
+Dim Page_Action
+Page_Action = ""
+Page_Action = Trim(Replace(request.querystring("Page_Action"), "'", ""))
+If Page_Action = "create" Then
+#retrievevariables#
+conn.open strCon
+Set objRec = server.createobject("ADODB.Recordset")
+objRec.ActiveConnection = conn
+strSQL = "select count(#insertfieldkey#) as numberofresults from #inserttable# where #insertfieldkey# = '" & #insertfieldkey# & "'"
+objRec.open(strSQL)
+insertflag = "true"
+#validateentries#
+If objRec.fields("numberofresults").value > 0 Then
+objRec.close()
+conn.close()
+insertflag = "false"
+%>
+<script Language="javascript">
+alert("The #insertobjectdescription# cannot be added as the record key you specified is already included in the database");
+window.location = "#insertfilename#"
+</script>
+<%
+End If
+If insertflag = "true" Then
+#generateinsertSQL#
+conn.execute countersql
+conn.close()
+response.redirect("#insertfilename#?createcomplete=true")
+End If
+End If
+%>
+<html>
+<head>
+<Title>#insertpagetitle#</Title>
+</head>
+<body>
+<center>
+<table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse" bordercolor="111111">
+<tr>
+<td align="center">
+<hr color="000000" width="50%" size="1">
+<center>
+<%
+If Not createcomplete = "true" Then
+%>
+<h3>Create #insertobjectdescription#</h3>
+Fill in the input fields below  to create a new #insertobjectdescription#:
+<br>
+<form name="create" method="POST" action="#insertfilename#?Page_Action=create">
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="111111" width="62%">
+#createtextboxes#
+</table>
+<p align="center">
+<input type="button" value="Create #insertobjectdescription#" name="b1" onclick="submit();"></p>
+</form>
+<%
+Else
+response.write("#insertobjectdescription# Successfully Created")
+End If
+%>
+</center>
+<hr color="000000" width="50%" size="1">
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Help_File>
+	<Key_Word>
+		<Term>insertdatabase</Term>
+		<Meaning>The database filename that will be used in the database connection string of the generated page. No path information is required. The default path generated on the ASP pages is always in the format of "fpdb/#insertdatabase#"</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>insertfieldkey</Term>
+		<Meaning>The primary key used as the identifier in the database. Currently only a single field is accepted as being the primary key of a table.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>retrievevariables</Term>
+		<Meaning>Generates the request.form statements on the ASP pages for the fields held in the database. The input field names on the ASP form correspond with the field names used in the database.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>insertobjectdescription</Term>
+		<Meaning>Used on the generated page to refer to the object represented by the table in the database. This is used for headings and in general sentences.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>insertfilename</Term>
+		<Meaning>The name of the generated ASP page. This is often used when the page contains a link to itself, especially when the page contains forms.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>inserttable</Term>
+		<Meaning>The name of the database table used in the generated ASP page. Currently the system only supports single table generations.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>generateupdateSQL</Term>
+		<Meaning>Generates an update SQL string, most often used in a database value editing page.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>insertpagetitle</Term>
+		<Meaning>The page title of the generated ASP page.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>createfilledtextboxes</Term>
+		<Meaning>Generates a list of textboxes for all the fields contained in the database, with the textboxes filled in based on the result of a SQL select statement.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>createdisplaytable</Term>
+		<Meaning>Creates a table listing all the fields of the database together with all the records currently in the database.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>validateentries</Term>
+		<Meaning>Provides for simple validation on the generated page. Checks that all retrieved variables contain a value and checks that a primary key does not already exist in the database.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>generateinsertSQL</Term>
+		<Meaning>Generates an insert SQL string, most often used in a database value create page.</Meaning>
+	</Key_Word>
+	<Key_Word>
+		<Term>createtextboxes</Term>
+		<Meaning>Generates a list of textboxes for all the fields contained in the database.</Meaning>
+	</Key_Word>
+</Help_File>

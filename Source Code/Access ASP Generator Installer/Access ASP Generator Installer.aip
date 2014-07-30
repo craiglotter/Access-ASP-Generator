@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" version="1.9" modules="professional" RootPath=".">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="ProductName" Value="Access ASP Generator"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="BannerBitmap" Value="installer_background.jpg"/>
+    <ROW Property="ProductVersion" Value="1.0.0"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{89C0E1B1-F0EE-4ACF-AEDE-636868882F8C}"/>
+    <ROW Property="ProductCode" Value="{925165DB-AD80-43A7-BC5A-22B4626D5F6D}"/>
+    <ROW Property="ARPPRODUCTICON" Value="controlPanelIcon.exe"/>
+    <ROW Property="DialogBitmap" Value="installer_background_dialog.jpg"/>
+    <ROW Property="Manufacturer" Value="CodeUnit"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="ASP_Templates_DIR" Directory_Parent="TARGETDIR" DefaultDir="ASP_Te~1|ASP_Templates"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" Directory_Parent="" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="Access_ASP_Generator.exe" ComponentId="{2C329B52-D628-4FE4-A6AB-710B1509B9B2}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="Access_ASP_Generator.exe" FullKeyPath="TARGETDIR\Access ASP Generator.exe"/>
+    <ROW Component="Template_Simple_Create_Page.txt" ComponentId="{03DDA4D4-772F-450A-8021-91C7C37E4E84}" Directory_="ASP_Templates_DIR" Attributes="0" Condition="" KeyPath="Template_Simple_Create_Page.txt" FullKeyPath="TARGETDIR\ASP_Templates"/>
+    <ROW Component="template.txt" ComponentId="{7ADBE967-2846-483B-8AA8-5C9907462235}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="template.txt" FullKeyPath="TARGETDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Feature_Parent="" Title="MainFeature" Description="Description" Display="2" Level="1" Directory_="TARGETDIR" Attributes="0" Components="template.txt Access_ASP_Generator.exe Template_Simple_Create_Page.txt"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Template_Simple_Create_Page.txt" Component_="Template_Simple_Create_Page.txt" FileName="Templa~1.txt|Template_Simple_Create_Page.txt" Version="" Language="" Attributes="" SourcePath="..\Access ASP Generator\obj\Release\ASP_Templates\Template_Simple_Create_Page.txt" SelfReg="false"/>
+    <ROW File="Template_Simple_Display_Page.txt" Component_="Template_Simple_Create_Page.txt" FileName="Templa~2.txt|Template_Simple_Display_Page.txt" Version="" Language="" Attributes="" SourcePath="..\Access ASP Generator\obj\Release\ASP_Templates\Template_Simple_Display_Page.txt" SelfReg="false"/>
+    <ROW File="Template_Simple_Edit_Page.txt" Component_="Template_Simple_Create_Page.txt" FileName="Templa~3.txt|Template_Simple_Edit_Page.txt" Version="" Language="" Attributes="" SourcePath="..\Access ASP Generator\obj\Release\ASP_Templates\Template_Simple_Edit_Page.txt" SelfReg="false"/>
+    <ROW File="Template_Simple_Remove_Page.txt" Component_="Template_Simple_Create_Page.txt" FileName="Templa~4.txt|Template_Simple_Remove_Page.txt" Version="" Language="" Attributes="" SourcePath="..\Access ASP Generator\obj\Release\ASP_Templates\Template_Simple_Remove_Page.txt" SelfReg="false"/>
+    <ROW File="template.txt" Component_="template.txt" FileName="template.txt" Version="" Language="" Attributes="" SourcePath="..\Access ASP Generator\obj\Release\template.txt" SelfReg="false"/>
+    <ROW File="Access_ASP_Generator.exe" Component_="Access_ASP_Generator.exe" FileName="Access~1.exe|Access ASP Generator.exe" Version="" Language="" Attributes="" SourcePath="..\Access ASP Generator\obj\Release\Access ASP Generator.exe" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Source="" Target="A higher version of [ProductName] is installed."/>
+    <ROW Action="AI_LaunchApp" Type="194" Source="viewer.exe" Target="[#Access_ASP_Generator.exe]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_TARGETDIR" Type="307" Source="TARGETDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="UpgradeCode" VersionMin="" VersionMax="ProductVersion" Language="" Attributes="1025" Remove=""/>
+    <ROW UpgradeCode="UpgradeCode" VersionMin="ProductVersion" VersionMax="" Language="" Attributes="2" Remove=""/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMergeModsComponent">
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Access_ASP_Generator" Directory_="SHORTCUTDIR" Name="Access~1|Access ASP Generator" Component_="Access_ASP_Generator.exe" Target="[TARGETDIR]\Access ASP Generator.exe" Arguments="" Description="" Hotkey="0" Icon_="controlPanelIcon.exe" IconIndex="0" ShowCmd="1" WkDir=""/>
+    <ROW Shortcut="Uninstall_Access_ASP_Generator" Directory_="SHORTCUTDIR" Name="Uninst~1|Uninstall Access ASP Generator" Component_="Access_ASP_Generator.exe" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="" Hotkey="0" Icon_="SystemFolder_msiexec.exe" IconIndex="0" ShowCmd="1" WkDir=""/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="SystemFolder_msiexec.exe" SourcePath="&lt;uninstall.ico&gt;" Index="0"/>
+    <ROW Name="controlPanelIcon.exe" SourcePath="Images\Application_Icon.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="installer_background.jpg" SourcePath="Images\installer_background.jpg"/>
+    <ROW Name="installer_background_dialog.jpg" SourcePath="Images\installer_background_dialog.jpg"/>
+    <ROW Name="viewer.exe" SourcePath="&lt;viewer.exe&gt;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ATTRIBUTE name="Start" value="WelcomeDlg FolderDlg VerifyReadyDlg"/>
+    <ATTRIBUTE name="Progress" value="ProgressDlg"/>
+    <ATTRIBUTE name="End" value="ExitDialog"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMediaComponent">
+    <ATTRIBUTE name="InstallationType" value="1"/>
+    <ATTRIBUTE name="MediaSize" value="0"/>
+    <ATTRIBUTE name="Compress" value="1"/>
+    <ATTRIBUTE name="Package" value="10"/>
+    <ATTRIBUTE name="PackageName" value="Release\Access ASP Generator Installer"/>
+    <ATTRIBUTE name="IconPath" value="Images\Application_Icon.ico?0"/>
+  </COMPONENT>
+</DOCUMENT>
