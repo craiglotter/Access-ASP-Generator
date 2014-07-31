@@ -1,4 +1,4 @@
-Access-ASP-Generator
+Access ASP Generator
 ====================
 
 Access ASP Generator provides a quick and dirty way to generate basic data access ASP pages based on a specified Microsoft Access database. Templates exist for the generation of simple Add, Remove, Edit and Display data pages.  
